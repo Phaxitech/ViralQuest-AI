@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Syne", sans-serif;
+
+  --color-bg: #0F172A;
+  --color-s1: #020617;
+  --color-s2: #0F172A;
+  --color-b1: #1E293B;
+  --color-b2: #334155;
+  --color-tx: #E2E8F0;
+  --color-mu: #94A3B8;
+  --color-brand: #6366F1;
+  --color-in: #818CF8;
+  --color-gr: #10B981;
+  --color-re: #EF4444;
+
+  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-tx font-sans min-h-screen overflow-x-hidden;
+  }
+
+  body::before {
+    content: '';
+    @apply fixed inset-0 z-0 pointer-events-none opacity-30;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply bg-brand text-white font-display font-bold px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-brand/20 hover:bg-indigo-500 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-slate-800 text-slate-200 border border-slate-700 font-display font-bold px-6 py-3 rounded-xl transition-all duration-200 hover:bg-slate-700 disabled:opacity-30;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { @apply bg-b2 rounded-full; }
